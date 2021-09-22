@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= BASE_URL %>apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= BASE_URL %>apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= BASE_URL %>apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= BASE_URL %>apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= BASE_URL %>apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= BASE_URL %>apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= BASE_URL %>apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= BASE_URL %>apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= BASE_URL %>android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= BASE_URL %>favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<%= BASE_URL %>ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Maverick SSL Upgrade Instructions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+    <div class="centerFlex">
+        <div class="flexOutline">
+            <div>
+                <img src="/media/maverick-logo.svg" width=300px>
+            </div>
+            <div>
+                <div class='sslupgrade'>
+                    <hr> WARNING: You are viewing an unencrypted webpage.<br> This website uses technologies that only work over an encrypted link (https).<br>
+                    <hr>
+                </div>
+                <div class='ssldone'>
+                    <hr>Success: You are viewing this page through an encrypted link (https).<br> If you do not have a green padlock in the URL bar, please follow the instructions below to install the correct CA certificate.<br>
+                    <hr>
+                </div>
+                <div class='sslinstructions'>
+                    Maverick typically uses local domain/hostnames for access (eg. maverick-raspberry.local). Because of this, it is not possible to obtain public signed SSL certificates by recognised Certificate Authorities.<br> In order to facilitate
+                    encrypted communications, Maverick automatically generates cryptography certificates for this computer. To use them, you must download the CA (Certificate Authority) certificate and install it into your browser or OS so it recognises
+                    the Maverick certificates.<br>
+                    <hr>
+                    <a href="/security/mavCA.crt">Download Maverick CA Certificate</a>
+                    <hr> Installation Instructions
+                    <hr> <strong>Firefox</strong><br>
+                    When you click on the Download link above, Firefox should automatically recognise the certificate and ask you to install it.<br>
+                    Choose the top two 'Trust' tickboxes - do NOT choose the third option for software developers, then click OK.<br>
+                    <img src="media/sslupdate-firefoxca.png"><br>
+                    <script language="JavaScript">
+                        document.write('<a href="https://' + window.location.hostname + '/" >Then load the website through https</a> <br>');
+                    </script>
+                    <hr> <strong>MacOS Chrome/Safari</strong><br>
+                    On MacOS when using Chrome or Safari browsers, clicking the Download link above downloads the CA certificate typically to your Downloads folder.<br>
+                    Find it in the Finder and double click on it, and should import the certificate using Keychain Access.<br>
+                    Find the 'maverick-ca' certifcate in the 'Certificates' list, and double click on it, then expand the 'Trust' section.<br>
+                    Change the top option to 'Always Trust', and it should fill all the below options with 'Always Trust'.<br>
+                    <img src="media/sslupdate-macos-loadca.png"><br>
+                    Close the window, and in the certificate list it should now have a blue plus sign beside it.  This signifies Trusted certificate.<br>
+                    <img src="media/sslupdate-macos-trusted.png">
+                    <script language="JavaScript">
+                        document.write('<a href="https://' + window.location.hostname + '/" >Then load the website through https</a> <br>');
+                    </script>
+                    <hr>
+                </div>
+            </div>
+    </body>
+
+    <script>
+        if (document.location.protocol != "https:") {
+            el = document.querySelector(".sslupgrade");
+            el.style.display = 'block';
+            el.style.visibility = 'visible';
+        }
+        else {
+            el = document.querySelector(".ssldone");
+            el.style.display = 'block';
+            el.style.visibility = 'visible';
+        }
+    </script>
+
+</html>

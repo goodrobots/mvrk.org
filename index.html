@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <title>Maverick Temporary Website</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div class="centerFlex">
+        <div class="flexOutline">
+            <div>
+                <img src="/media/maverick-logo.svg" width=350px>
+            </div>
+            <div>
+                <hr>
+		<a href="https://goodrobots.github.io/maverick/#/?id=os-images">Maverick OS Images</a><br>
+		<a href="https://goodrobots.github.io/maverick/#/">Maverick Documentation</a><br>
+                <a href="/analysis/grafana/">Grafana - System and Flight Analysis</a><br>
+                <a href="/analysis/uploader">Flight Log Uploader</a><br>
+                <hr>
+            </div>
+
+                <div class='sslupgrade'>
+                    <hr>
+                    WARNING: You are viewing an unencrypted webpage.<br> This website uses technologies that only work over an encrypted link (https).<br>
+                    <a href="sslupgrade.html">Please visit here to upgrade this website to https.</a>
+                    <hr>
+                </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    if (document.location.protocol != "https:") {
+        el = document.querySelector(".sslupgrade");
+        el.style.display = 'block';
+        el.style.visibility = 'visible';
+    }
+</script>
+
+</html>
